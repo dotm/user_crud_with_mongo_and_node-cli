@@ -8,11 +8,14 @@ const exitWithError = (error) => {
     process.exit(1)
 }
 
-const insertUser = (db) => {
+const insertUser = (db,user) => {
     return new Promise((resolve,reject) => {
+        const name = user.name
+        const email = user.email
+
         db.collection("user").insertOne({
-            name: "Test",
-            email: "test@yopmail.com"
+            name: name,
+            email: email
         }, (error,result) => {
             if(error){
                 console.log("Error inserting document", error)
@@ -20,12 +23,17 @@ const insertUser = (db) => {
                 return
             }
     
+            console.log("Successfully inserted user:", name)
             resolve(db)
         })
     })
 }
 
+let user = {
+    name: "Joe",
+    email: "joe@yopmail.com"
+}
 connectToDB
-    .then(insertUser)
+    .then((db)=> insertUser(db,user))
     .then(exitProcess)
     .catch(exitWithError)
