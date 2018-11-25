@@ -6,35 +6,25 @@ const exitProcess = util.exitProcess
 const exitWithError = util.exitWithError
 const USER_COLLECTION = require('./collection_name_constants').USER_COLLECTION
 
-const insertUser = (db,user) => {
+const findUser = (db, queryFilter = {}) => {
     return new Promise((resolve,reject) => {
-        const name = user.name
-        const email = user.email
-
-        db.collection(USER_COLLECTION).insertOne({
-            name: name,
-            email: email
-        }, (error,result) => {
+        db.collection(USER_COLLECTION).findOne(queryFilter, (error,result) => {
             if(error){
-                console.log("Error inserting document", error)
+                console.log("Error finding document", error)
                 reject(error)
                 return
             }
-    
-            console.log("Successfully inserted user:", name)
-            resolve(db)
+
+            resolve(result)
         })
     })
 }
 
 let argv = require('minimist')(process.argv.slice(2));
-
-let user={
-    name: argv.name,
-    email: argv.email,
-}
+delete argv._
 
 connectToDB
-    .then((db)=> insertUser(db,user))
+    .then((db)=> findUser(db, argv))
+    .then(console.log)
     .then(exitProcess)
     .catch(exitWithError)

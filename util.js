@@ -1,5 +1,5 @@
 const exitProcess = ()=>{
-    console.log("\nProcess exit without error\n")
+    console.log("\nProcess exited without error\n")
     process.exit()
 }
 const exitWithError = (error) => {
