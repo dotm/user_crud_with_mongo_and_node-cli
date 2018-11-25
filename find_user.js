@@ -1,4 +1,4 @@
-//Example CLI usage: node insert_user.js --name='User Name' --email=test@example.com
+//Example CLI usage: node find_user.js --name='User Name' --email=test@example.com
 
 const connectToDB = require('./client.js').connectToDB
 const util = require('./util.js')
