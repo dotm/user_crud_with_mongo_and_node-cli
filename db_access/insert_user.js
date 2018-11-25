@@ -1,10 +1,10 @@
 //Example CLI usage: node insert_user.js --name='User Name' --email=test@example.com
 
-const connectToDB = require('./client.js').connectToDB
-const util = require('./util.js')
+const connectToDB = require('../utils/client.js').connectToDB
+const util = require('../utils/util.js')
 const exitProcess = util.exitProcess
 const exitWithError = util.exitWithError
-const USER_COLLECTION = require('./collection_name_constants').USER_COLLECTION
+const USER_COLLECTION = require('../utils/collection_name_constants').USER_COLLECTION
 
 const insertUser = (db,user) => {
     const name = user.name

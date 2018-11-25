@@ -1,10 +1,10 @@
 //Example CLI usage: node find_user.js --name='User Name' --email=test@example.com
 
-const connectToDB = require('./client.js').connectToDB
-const util = require('./util.js')
+const connectToDB = require('../utils/client.js').connectToDB
+const util = require('../utils/util.js')
 const exitProcess = util.exitProcess
 const exitWithError = util.exitWithError
-const USER_COLLECTION = require('./collection_name_constants').USER_COLLECTION
+const USER_COLLECTION = require('../utils/collection_name_constants').USER_COLLECTION
 
 const findUser = (db, queryFilter = {}) => {
     return db.collection(USER_COLLECTION).findOne(queryFilter)

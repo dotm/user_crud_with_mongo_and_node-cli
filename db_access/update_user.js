@@ -3,11 +3,11 @@
 //  node update_user.js ObjectID --name='User Name'
 //  node update_user.js ObjectID --email=test@example.com
 
-const connectToDB = require('./client.js').connectToDB
-const util = require('./util.js')
+const connectToDB = require('../utils/client.js').connectToDB
+const util = require('../utils/util.js')
 const exitProcess = util.exitProcess
 const exitWithError = util.exitWithError
-const USER_COLLECTION = require('./collection_name_constants').USER_COLLECTION
+const USER_COLLECTION = require('../utils/collection_name_constants').USER_COLLECTION
 const ObjectID = require('mongodb').ObjectID;
 
 const updateUser_byID = (db, id, updatedFields) => {
