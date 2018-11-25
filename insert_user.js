@@ -1,3 +1,5 @@
+//Example CLI usage: node insert_user.js --name='User Name' --email=test@example.com
+
 const connectToDB = require('./client.js').connectToDB
 const util = require('./util.js')
 const exitProcess = util.exitProcess
@@ -24,10 +26,13 @@ const insertUser = (db,user) => {
     })
 }
 
+let argv = require('minimist')(process.argv.slice(2));
+
 let user={
-    name: "Lala",
-    email: 'lala@yopmail.com',
+    name: argv.name,
+    email: argv.email,
 }
+
 connectToDB
     .then((db)=> insertUser(db,user))
     .then(exitProcess)
