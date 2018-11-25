@@ -7,24 +7,19 @@ const exitWithError = util.exitWithError
 const USER_COLLECTION = require('./collection_name_constants').USER_COLLECTION
 
 const insertUser = (db,user) => {
-    return new Promise((resolve,reject) => {
-        const name = user.name
-        const email = user.email
+    const name = user.name
+    const email = user.email
 
-        db.collection(USER_COLLECTION).insertOne({
-            name: name,
-            email: email
-        }, (error,result) => {
-            if(error){
-                console.log("Error inserting document", error)
-                reject(error)
-                return
-            }
-    
-            console.log("Successfully inserted user:", name)
-            resolve(db)
-        })
+    let promise = db.collection(USER_COLLECTION).insertOne({
+        name: name,
+        email: email
     })
+    
+    promise.then(() => {
+        console.log("Successfully inserted user:", name)
+    })
+
+    return promise
 }
 
 let argv = require('minimist')(process.argv.slice(2));

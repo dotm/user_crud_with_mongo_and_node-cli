@@ -7,17 +7,7 @@ const exitWithError = util.exitWithError
 const USER_COLLECTION = require('./collection_name_constants').USER_COLLECTION
 
 const findUser = (db, queryFilter = {}) => {
-    return new Promise((resolve,reject) => {
-        db.collection(USER_COLLECTION).findOne(queryFilter, (error,result) => {
-            if(error){
-                console.log("Error finding document", error)
-                reject(error)
-                return
-            }
-
-            resolve(result)
-        })
-    })
+    return db.collection(USER_COLLECTION).findOne(queryFilter)
 }
 
 let argv = require('minimist')(process.argv.slice(2));
