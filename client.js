@@ -31,6 +31,6 @@ const connectToDB = new Promise((resolve,reject) => {
 })
 
 const exportedObject = {
-    connectToDB: connectToDB
+    connectToDB
 }
 module.exports = exportedObject

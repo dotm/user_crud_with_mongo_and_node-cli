@@ -1,12 +1,7 @@
 const connectToDB = require('./client.js').connectToDB
-const exitProcess = ()=>{
-    console.log("\nProcess exit without error\n")
-    process.exit()
-}
-const exitWithError = (error) => {
-    console.log(error)
-    process.exit(1)
-}
+const util = require('./util.js')
+const exitProcess = util.exitProcess
+const exitWithError = util.exitWithError
 
 const insertUser = (db,user) => {
     return new Promise((resolve,reject) => {
@@ -29,9 +24,9 @@ const insertUser = (db,user) => {
     })
 }
 
-let user = {
-    name: "Joe",
-    email: "joe@yopmail.com"
+let user={
+    name: "Lala",
+    email: 'lala@yopmail.com',
 }
 connectToDB
     .then((db)=> insertUser(db,user))
