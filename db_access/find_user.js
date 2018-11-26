@@ -1,4 +1,4 @@
-const USER_COLLECTION = require('../utils/collection_name_constants').USER_COLLECTION
+const USER_COLLECTION = require('./collection_name_constants.js').USER_COLLECTION
 
 const findUser = (db, queryFilter = {}) => {
     return db.collection(USER_COLLECTION).findOne(queryFilter)
