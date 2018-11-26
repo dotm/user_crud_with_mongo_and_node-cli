@@ -1,6 +1,6 @@
 //Example CLI usage: node insert_user.js --name='User Name' --email=test@example.com
 
-const connectToDB = require('../utils/client.js').connectToDB
+const connectToDB = require('../db_access/client.js').connectToDB
 const util = require('../utils/util.js')
 const exitProcess = util.exitProcess
 const exitWithError = util.exitWithError
