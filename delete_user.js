@@ -1,7 +1,7 @@
 //Example CLI usage:
 //  node delete_user.js  ObjectID
 
-const connectToDB = require('../utils/client.js').connectToDB
+const connectToDB = require('../db_access/client.js').connectToDB
 const util = require('../utils/util.js')
 const exitProcess = util.exitProcess
 const exitWithError = util.exitWithError

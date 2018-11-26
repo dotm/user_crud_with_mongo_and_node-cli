@@ -3,7 +3,7 @@
 //  node update_user.js ObjectID --name='User Name'
 //  node update_user.js ObjectID --email=test@example.com
 
-const connectToDB = require('../utils/client.js').connectToDB
+const connectToDB = require('../db_access/client.js').connectToDB
 const util = require('../utils/util.js')
 const exitProcess = util.exitProcess
 const exitWithError = util.exitWithError
